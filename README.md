@@ -1,2 +1,2 @@
 # Lotto-Sessions
-Technology learning sessions, for having fun while learning programming foundations.
+Technology sessions, for having fun while learning programming foundations.
