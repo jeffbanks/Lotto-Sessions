@@ -47,9 +47,9 @@ class PowerDrawingTest extends Specification {
         corePicks.add(3)
         corePicks.add(4)
         corePicks.add(5)
-        when:
+        when:"power drawing is constructed with date, core picks, and power pick"
         def powerDrawing = new PowerDrawing(date, corePicks, powerPick)
-        then:
+        then: "power drawing is constructed as expected"
         powerDrawing
         powerDrawing.getCorePicks()
         powerDrawing.getDate()
@@ -57,9 +57,9 @@ class PowerDrawingTest extends Specification {
 
         and:
 
-        when:
+        when: "validation occurs"
         powerDrawing.validate()
-        then:
+        then: "no exception occurs"
         noExceptionThrown()
     }
 
@@ -75,21 +75,22 @@ class PowerDrawingTest extends Specification {
         corePicks.add(3)
         corePicks.add(4)
         corePicks.add(5)
-        when:
+        
+        when: "date of drawing is not provided"
         def powerDrawing = new PowerDrawing(null, corePicks, powerPick)
         then:
         thrown(IllegalArgumentException)
 
         and:
 
-        when:
+        when:"core picks are not provided"
         def powerDrawing2 = new PowerDrawing(date, null, powerPick)
         then:
         thrown(IllegalArgumentException)
 
         and:
 
-        when:
+        when:"power pick is not provided"
         def powerDrawing3 = new PowerDrawing(date, corePicks, null)
         then:
         thrown(IllegalArgumentException)
