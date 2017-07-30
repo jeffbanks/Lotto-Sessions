@@ -38,8 +38,7 @@ class PowerDrawing(date: LocalDate, corePicks: Set<Int>, val powerPick:Int) : Dr
     override fun validate() {
 
         super.validateCorePicksSize(CORE_PICKS_SIZE)
-
-        val corePicksInRange = corePicks!!.stream()
+        val corePicksInRange = corePicks.stream()
                 .allMatch { x -> IntStream.rangeClosed(1, MAX_CORE_PICK).anyMatch { r -> r == x } }
 
         if (!corePicksInRange) {
