@@ -26,8 +26,6 @@
 
 package com.jjbanks.lotto.model
 
-import com.jjbanks.lotto.model.FailedValidationException
-import com.jjbanks.lotto.model.PowerDrawing
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -134,22 +132,21 @@ class PowerDrawingTest extends Specification {
         corePicks.add(5)
         when:
 
-        new PowerDrawing(null, corePicks, powerPick)
-
-        then:
+            new PowerDrawing(null, corePicks, powerPick)
+        then:"exception thrown as date can't be null"
         thrown(IllegalArgumentException)
 
         and:
-
         when:
-
         new PowerDrawing(date, null, powerPick)
-        then:
+
+        then:"exception thrown as core picks can't be null"
         thrown(IllegalArgumentException)
 
 
-        // This case previously covered in Java, no longer exists with Kotlin
-        // as we defined the constructor to require a non-null value for powerPick.
+        // The null case below  for powerpick
+        // had to be covered in Java, but checks no longer needed with Kotlin
+        // We defined the constructor to require a non-null value for powerPick.
         // Kotlin will detect and identify as problem at compile time!
         // If you wanted to allow, you would provide '?' after the parameter.
         // new PowerDrawing(date, corePicks, null)
