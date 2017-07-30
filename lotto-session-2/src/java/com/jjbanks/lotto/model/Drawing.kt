@@ -28,15 +28,10 @@ package com.jjbanks.lotto.model
 
 import java.time.LocalDate
 
-open class Drawing (val date: LocalDate, val corePicks: Set<Int>) {
+abstract class Drawing (val date: LocalDate, val corePicks: Set<Int>) {
 
     @Throws(FailedValidationException::class)
-    open fun validate() {
-
-        if (date == null) {
-            throw IllegalArgumentException ("Missing date for drawing")
-        }
-    }
+    abstract fun validate()
 
     @Throws(FailedValidationException::class)
     open fun validateCorePicksSize(expectedSize: Int?) {
