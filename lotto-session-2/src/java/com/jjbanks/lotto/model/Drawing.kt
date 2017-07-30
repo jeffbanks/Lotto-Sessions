@@ -34,11 +34,11 @@ abstract class Drawing (val date: LocalDate, val corePicks: Set<Int>) {
     abstract fun validate()
 
     @Throws(FailedValidationException::class)
-    open fun validateCorePicksSize(expectedSize: Int?) {
+    open fun validateCorePicksSize(expectedSize: Int) {
 
         // Note: able to remove the null check for core pics, as it is no longer allowed
         if (corePicks.isEmpty() || corePicks.size != expectedSize) {
-            throw FailedValidationException("Core picks are not the expected size: " + expectedSize!!)
+            throw FailedValidationException("Core picks are not the expected size: " + expectedSize)
         }
     }
 }
