@@ -26,35 +26,63 @@
 
 package com.jjbanks.lotto.sessions
 
-import com.jjbanks.sessions.LottoController
+import com.jjbanks.lotto.model.Drawing
 
+import com.jjbanks.lotto.service.LottoData
+import com.jjbanks.lotto.service.LottoService
+import com.jjbanks.sessions.LottoController
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
-
 import spock.lang.Specification
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup
 
 class LottoLoaderTest extends Specification {
 
     MockMvc mockMvc
+    LottoService mockLottoService
 
     def setup() {
-        mockMvc = standaloneSetup(new LottoController()).build()
+        mockLottoService = Mock(LottoService)
+        mockMvc = standaloneSetup(new LottoController(lottoService: mockLottoService)).build()
     }
 
-    def "load good set of numbers"() {
+    def "load via web service works correctly"() {
 
-        when:
+        when: "calling web service and get a response"
         def response = mockMvc.perform(get("/").contentType(MediaType.TEXT_PLAIN)).andReturn().response
         def result = response.getContentAsString()
 
-        then:
-        result
+        then: "expect that a valid response occurs and validation of two test drawings were loaded"
         response.getStatus() == 200
+        1 * mockLottoService.getDrawings() >> { return buildTestDrawings(2) }
+        result == "Successfully loaded.  Number of drawings loaded: 2"
     }
 
-    def "load bad set of numbers - expected fail"() {
+    def "load via web service and unexpected problem occurs"() {
 
+        when: "calling web service and get a response"
+        def response = mockMvc.perform(get("/").contentType(MediaType.TEXT_PLAIN)).andReturn().response
+        def result = response.getContentAsString()
+        println(result)
+
+        then: "expect that exception handling occurred and indicated failure"
+        response.getStatus() == 200
+        1 * mockLottoService.getDrawings() >> { throw new Exception("Issue occurred getting drawings") }
+        result == "Failed to load due to exception: Issue occurred getting drawings"
+
+    }
+
+    /* Test helper to construct N # of drawings */
+    def buildTestDrawings(Integer number) {
+
+        LottoData lottoData = new LottoData()
+        Set<Drawing> drawings = new HashSet<Drawing>()
+
+        for(Integer i = 0; i<number; i++) {
+            drawings.add(lottoData.getPowerDrawing())
+        }
+        return drawings
     }
 }

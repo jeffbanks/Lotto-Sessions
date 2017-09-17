@@ -41,12 +41,13 @@ class LottoController {
 
     @RequestMapping(method = arrayOf(RequestMethod.GET))
     fun load(): String {
-        val drawings : Set<Drawing>?
+        val drawings : Set<Drawing>
         try {
             drawings = lottoService.getDrawings()
         } catch (e : Exception) {
-            return "Drawings were not loaded correctly due to exception: ${e.message}"
+            return "Failed to load due to exception: ${e.message}"
         }
-        return "Drawings were loaded successfully.  Number of drawings loaded: ${drawings.size}"
+        val numOfDrawings = drawings.size
+        return "Successfully loaded.  Number of drawings loaded: $numOfDrawings"
     }
 }
