@@ -34,7 +34,7 @@ class PowerDrawing(date: LocalDate, corePicks: Set<Int>, val powerPick:Int) : Dr
     companion object {
         @JvmField  val MAX_CORE_PICK : Int = 65
         @JvmField  val MAX_POWER_PICK : Int = 36
-        @JvmField  val  CORE_PICKS_SIZE = 5
+        @JvmField  val CORE_PICKS_SIZE : Int = 5
     }
 
     override fun validate() {
