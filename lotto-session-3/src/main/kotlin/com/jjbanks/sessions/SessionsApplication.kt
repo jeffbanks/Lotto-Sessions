@@ -1,4 +1,3 @@
-package com.jjbanks.sessions
 /*
  * MIT License
  *
@@ -24,6 +23,9 @@ package com.jjbanks.sessions
  *
  *
  */
+
+package com.jjbanks.sessions
+
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.ComponentScan

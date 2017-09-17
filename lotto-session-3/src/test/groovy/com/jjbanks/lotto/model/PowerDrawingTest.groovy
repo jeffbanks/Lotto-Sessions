@@ -1,4 +1,4 @@
-package com.jjbanks.lotto.model
+
 /*
  * MIT License
  *
@@ -24,6 +24,9 @@ package com.jjbanks.lotto.model
  *
  *
  */
+
+package com.jjbanks.lotto.model
+
 import spock.lang.Specification
 import spock.lang.Unroll
 

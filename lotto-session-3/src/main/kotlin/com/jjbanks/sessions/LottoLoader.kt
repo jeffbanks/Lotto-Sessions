@@ -1,4 +1,3 @@
-package com.jjbanks.sessions
 /*
  * MIT License
  *
@@ -24,6 +23,9 @@ package com.jjbanks.sessions
  *
  *
  */
+
+package com.jjbanks.sessions
+
 import com.jjbanks.lotto.model.Drawing
 import com.jjbanks.lotto.service.LottoService
 import org.springframework.beans.factory.annotation.Autowired

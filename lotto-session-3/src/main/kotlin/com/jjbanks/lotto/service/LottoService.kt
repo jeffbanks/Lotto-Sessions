@@ -1,4 +1,4 @@
-package com.jjbanks.lotto.service
+
 
 /*
  * MIT License
@@ -25,13 +25,13 @@ package com.jjbanks.lotto.service
  *
  *
  */
+package com.jjbanks.lotto.service
 
 import com.jjbanks.lotto.model.Drawing
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
-
 
 @Service
 class LottoService {

@@ -1,4 +1,4 @@
-package com.jjbanks.lotto.service
+
 
 /*
  * MIT License
@@ -25,7 +25,7 @@ package com.jjbanks.lotto.service
  *
  *
  */
-
+package com.jjbanks.lotto.service
 import com.jjbanks.lotto.model.Drawing
 import com.jjbanks.lotto.model.PowerDrawing
 import org.springframework.stereotype.Component

@@ -1,4 +1,3 @@
-package com.jjbanks.lotto.sessions
 /*
  * MIT License
  *
@@ -24,6 +23,9 @@ package com.jjbanks.lotto.sessions
  *
  *
  */
+
+package com.jjbanks.lotto.sessions
+
 import com.jjbanks.sessions.LottoController
 
 import org.springframework.http.MediaType

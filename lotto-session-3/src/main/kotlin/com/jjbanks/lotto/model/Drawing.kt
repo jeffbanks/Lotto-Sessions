@@ -23,6 +23,7 @@
  *
  *
  */
+
 package com.jjbanks.lotto.model
 
 import java.time.LocalDate

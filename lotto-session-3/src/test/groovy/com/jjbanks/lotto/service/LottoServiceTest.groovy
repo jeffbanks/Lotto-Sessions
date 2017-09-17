@@ -1,10 +1,3 @@
-package com.jjbanks.lotto.service
-
-import com.jjbanks.lotto.model.Drawing
-import com.jjbanks.lotto.service.LottoData
-import com.jjbanks.lotto.service.LottoService
-import spock.lang.Specification
-
 /*
  * MIT License
  *
@@ -30,6 +23,12 @@ import spock.lang.Specification
  *
  *
  */
+package com.jjbanks.lotto.service
+
+import com.jjbanks.lotto.model.Drawing
+import com.jjbanks.lotto.service.LottoData
+import com.jjbanks.lotto.service.LottoService
+import spock.lang.Specification
 
 class LottoServiceTest extends Specification {
 
